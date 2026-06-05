@@ -1,0 +1,6 @@
+.DS_Store
+
+# Local-only dashboard (never deployed to the public site)
+admin.html
+dashboard.js
+admin.css

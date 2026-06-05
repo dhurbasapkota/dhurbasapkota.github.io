@@ -1,0 +1,91 @@
+{
+  "name": "Dhurba Sapkota",
+  "initials": "DS",
+  "photo": "profile.jpg",
+  "photoVersion": 1780628742623,
+  "hero": {
+    "greeting": "Hi there!",
+    "bio": "Fuelled by a passion for research, building, and teaching, I'm a Research & Teaching Assistant at Wichita State University pursuing a PhD in Electrical & Computer Engineering. Explore my journey using the links below."
+  },
+  "about": {
+    "intro": [
+      "I'm Dhurba Sapkota, a Research & Teaching Assistant at Wichita State University, currently pursuing a PhD in Electrical & Computer Engineering.",
+      "I support students with coursework, clarify technical concepts, and assist with grading and feedback to improve learning outcomes. This role strengthens my communication, problem-solving, and mentoring skills while deepening my technical understanding."
+    ],
+    "careerText": "A snapshot of my education and current role — building a foundation at the intersection of software engineering and security research.",
+    "timeline": [
+      {
+        "date": "In Progress",
+        "title": "PhD, Electrical & Computer Engineering",
+        "place": "Wichita State University"
+      },
+      {
+        "date": "August 2025 — Present",
+        "title": "Research & Teaching Assistant",
+        "place": "Wichita State University — supporting students, clarifying concepts, grading & feedback."
+      }
+    ]
+  },
+  "skills": [
+    "JAVA",
+    "WEB CONTENT WRITING",
+    "SECURITY RESEARCH",
+    "PRIVACY",
+    "STATIC ANALYSIS",
+    "ANDROID",
+    "PROBLEM SOLVING",
+    "TECHNICAL COMMUNICATION",
+    "MENTORING",
+    "TEACHING"
+  ],
+  "skillsDetail": [
+    {
+      "name": "Java Development",
+      "meta": "Applications & static analysis tooling"
+    },
+    {
+      "name": "Security & Privacy Research",
+      "meta": "Data protection & app behavior verification"
+    },
+    {
+      "name": "Web Content Writing",
+      "meta": "Clear, technical, engaging copy"
+    },
+    {
+      "name": "Teaching & Mentoring",
+      "meta": "Guiding students to better outcomes"
+    },
+    {
+      "name": "Problem Solving",
+      "meta": "Breaking down complex challenges"
+    }
+  ],
+  "work": [
+    {
+      "title": "User Data Deletion Verification",
+      "desc": "A research project that verifies whether mobile applications truly delete user data from their backend servers after an account is deleted — addressing a critical privacy and data-protection concern in modern apps.",
+      "tags": [
+        "Java",
+        "Android",
+        "Privacy",
+        "Static Analysis"
+      ]
+    },
+    {
+      "title": "Teaching & Mentorship",
+      "desc": "Ongoing work guiding students through engineering coursework — translating dense technical concepts into clear, approachable explanations and providing actionable feedback that improves learning outcomes.",
+      "tags": [
+        "Mentoring",
+        "Communication",
+        "Grading"
+      ]
+    }
+  ],
+  "contact": {
+    "email": "sapkotadhurba51@gmail.com",
+    "location": "Wichita, Kansas, USA",
+    "role": "Research & Teaching Assistant, WSU",
+    "github": "#",
+    "linkedin": "#"
+  }
+}
