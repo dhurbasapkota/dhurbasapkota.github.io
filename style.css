@@ -29,6 +29,7 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 ::selection { background: var(--dark); color: #fff; }
+[hidden] { display: none !important; }
 
 /* ===== FLOATING FRAME / CARD ===== */
 .frame {

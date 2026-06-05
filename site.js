@@ -21,6 +21,13 @@
   // ---- Site name (logo on every page) ----
   $$('.js-name').forEach(el => { el.textContent = data.name; });
 
+  // ---- Resume link (nav + home card) — only shown if a PDF is uploaded ----
+  const resumeUrl = data.resume ? `${data.resume}?v=${data.resumeVersion || 0}` : '';
+  if (resumeUrl) {
+    $$('.js-resume').forEach(a => { a.setAttribute('href', resumeUrl); });
+    $$('.resume-nav, .resume-card').forEach(el => { el.hidden = false; });
+  }
+
   // ---- Photo (Home + About) ----
   const photoSrc = data.photo ? `${data.photo}?v=${data.photoVersion || 0}` : '';
   $$('.js-photo').forEach(el => {
