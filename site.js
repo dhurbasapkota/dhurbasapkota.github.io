@@ -95,8 +95,74 @@
   });
   if ($('#contactLocation')) $('#contactLocation').textContent = data.contact.location;
   if ($('#contactRole')) $('#contactRole').textContent = data.contact.role;
-  $$('.js-github').forEach(el => el.setAttribute('href', data.contact.github || '#'));
-  $$('.js-linkedin').forEach(el => el.setAttribute('href', data.contact.linkedin || '#'));
+  const setSocial = (cls, url) => {
+    const valid = url && url !== '#';
+    $$('.' + cls).forEach(el => {
+      if (valid) { el.setAttribute('href', url); el.hidden = false; }
+      else { el.hidden = true; }
+    });
+  };
+  setSocial('js-github', data.contact.github);
+  setSocial('js-linkedin', data.contact.linkedin);
+  setSocial('js-scholar', data.contact.scholar);
+  setSocial('js-orcid', data.contact.orcid);
+
+  // ---- Research / Publications page ----
+  if ($('#pubList')) {
+    const pubs = data.publications || [];
+    if (pubs.length) {
+      $('#pubList').innerHTML = pubs.map(p => `
+        <div class="pub-card">
+          <div class="pub-year">${esc(p.year || '—')}</div>
+          <div class="pub-body">
+            <h3>${esc(p.title)}</h3>
+            ${p.authors ? `<p class="pub-authors">${esc(p.authors)}</p>` : ''}
+            ${p.venue ? `<p class="pub-venue">${esc(p.venue)}</p>` : ''}
+            ${p.link ? `<a class="pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">Read more ↗</a>` : ''}
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  // ---- Contact form submission (Web3Forms) ----
+  const cform = document.getElementById('contactForm');
+  if (cform) {
+    cform.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = cform.querySelector('button[type="submit"]');
+      const orig = btn.innerHTML;
+      const nameEl = document.getElementById('name');
+      const emailEl = document.getElementById('email');
+      const msgEl = document.getElementById('message');
+      const key = data.contact.formAccessKey;
+      if (!key) {
+        const subject = encodeURIComponent('Portfolio contact from ' + (nameEl?.value || ''));
+        const body = encodeURIComponent((msgEl?.value || '') + '\n\nReply to: ' + (emailEl?.value || ''));
+        window.location.href = `mailto:${data.contact.email}?subject=${subject}&body=${body}`;
+        return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: key,
+            subject: 'New message from your portfolio site',
+            from_name: nameEl.value,
+            name: nameEl.value, email: emailEl.value, message: msgEl.value
+          })
+        });
+        const json = await res.json();
+        if (json.success) { btn.textContent = 'Message sent! ✓'; cform.reset(); }
+        else throw new Error(json.message || 'failed');
+      } catch (err) {
+        btn.textContent = 'Failed — please email directly';
+      } finally {
+        setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 4000);
+      }
+    });
+  }
 
   // Re-trigger reveal animation for any freshly injected .reveal elements
   document.dispatchEvent(new Event('content-rendered'));

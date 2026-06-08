@@ -16,20 +16,3 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// Contact form (only on contact page)
-const form = document.getElementById('contactForm');
-if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const original = btn.textContent;
-    btn.textContent = 'Message Sent!';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.disabled = false;
-      form.reset();
-    }, 2500);
-  });
-}

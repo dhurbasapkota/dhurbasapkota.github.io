@@ -87,11 +87,15 @@
       ]
     }
   ],
+  "publications": [],
   "contact": {
     "email": "sapkotadhurba51@gmail.com",
     "location": "Wichita, Kansas, USA",
     "role": "Research & Teaching Assistant, WSU",
     "github": "#",
-    "linkedin": "#"
+    "linkedin": "#",
+    "scholar": "",
+    "orcid": "",
+    "formAccessKey": ""
   }
 }
