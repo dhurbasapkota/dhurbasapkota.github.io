@@ -101,7 +101,7 @@ ul { list-style: none; }
   font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 700;
   font-size: 4rem; color: #6E6E73; letter-spacing: -2px;
 }
-.photo-inner .photo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-inner .photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
 
 .hero-text h1 {
   font-family: 'Poppins', sans-serif; font-weight: 700;
