@@ -124,7 +124,7 @@
     }
   }
 
-  // ---- Contact form submission (FormSubmit → emails data.contact.email) ----
+  // ---- Contact form submission (Web3Forms → emails you, works on any domain) ----
   const cform = document.getElementById('contactForm');
   if (cform) {
     cform.addEventListener('submit', async (e) => {
@@ -134,25 +134,27 @@
       const nameEl = document.getElementById('name');
       const emailEl = document.getElementById('email');
       const msgEl = document.getElementById('message');
+      const key = data.contact.formAccessKey;
+      if (!key) { btn.textContent = 'Form not set up yet'; setTimeout(() => { btn.innerHTML = orig; }, 3000); return; }
       btn.disabled = true; btn.textContent = 'Sending…';
       try {
-        const res = await fetch('https://formsubmit.co/ajax/' + encodeURIComponent(data.contact.email), {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            Name: nameEl.value,
-            Email: emailEl.value,
-            Message: msgEl.value,
-            _subject: 'New message from your portfolio',
-            _template: 'table'
+            access_key: key,
+            subject: 'New message from your portfolio',
+            from_name: nameEl.value,
+            name: nameEl.value,
+            email: emailEl.value,
+            message: msgEl.value
           })
         });
         const json = await res.json();
-        if (json.success === true || json.success === 'true') {
-          btn.textContent = 'Message sent! ✓'; cform.reset();
-        } else throw new Error(json.message || 'failed');
+        if (json.success) { btn.textContent = 'Message sent! ✓'; cform.reset(); }
+        else throw new Error(json.message || 'failed');
       } catch (err) {
-        btn.textContent = 'Failed — please email directly';
+        btn.textContent = 'Failed — please try again';
       } finally {
         setTimeout(() => { btn.innerHTML = orig; btn.disabled = false; }, 4000);
       }
