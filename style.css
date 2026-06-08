@@ -80,10 +80,10 @@ ul { list-style: none; }
   display: grid; grid-template-columns: auto 1fr; gap: 4rem;
   align-items: center; padding: 4rem 0 5rem;
 }
-.hero-photo { position: relative; width: 260px; height: 280px; }
+.hero-photo { position: relative; width: 280px; height: 280px; }
 .photo-glow {
   position: absolute; inset: -10px;
-  border-radius: 18px;
+  border-radius: 50%;
   /* grey glow instead of rainbow */
   background: radial-gradient(circle at 30% 40%, #fff 0%, #C4C4CB 35%, #9C9CA3 70%, #7E7E86 100%);
   filter: blur(6px);
@@ -91,7 +91,7 @@ ul { list-style: none; }
 }
 .photo-inner {
   position: absolute; inset: 0;
-  border-radius: 16px;
+  border-radius: 50%;
   background: linear-gradient(160deg, #DADADE, #B7B7BD);
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
