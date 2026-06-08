@@ -21,6 +21,11 @@
   // ---- Site name (logo on every page) ----
   $$('.js-name').forEach(el => { el.textContent = data.name; });
 
+  // ---- Profile identity (title, organization, verified tick) ----
+  $$('.js-title').forEach(el => { el.textContent = data.title || ''; el.hidden = !data.title; });
+  $$('.js-org').forEach(el => { el.textContent = data.organization || ''; el.hidden = !data.organization; });
+  $$('.js-verified').forEach(el => { el.hidden = !data.verified; });
+
   // ---- Resume link (nav + home card) — only shown if a PDF is uploaded ----
   const resumeUrl = data.resume ? `${data.resume}?v=${data.resumeVersion || 0}` : '';
   if (resumeUrl) {

@@ -101,6 +101,22 @@ ul { list-style: none; }
   font-family: 'Poppins', sans-serif; font-style: normal; font-weight: 700;
   font-size: 4rem; color: #6E6E73; letter-spacing: -2px;
 }
+
+/* profile identity block (under the photo) */
+.profile-block { display: flex; flex-direction: column; align-items: center; gap: 1.3rem; }
+.photo-identity { text-align: center; display: flex; flex-direction: column; gap: 0.3rem; }
+.pi-name {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem;
+  font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--ink); letter-spacing: -0.4px;
+}
+.verified-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 21px; height: 21px; border-radius: 50%;
+  background: #22C55E; color: #fff; font-size: 0.72rem; font-weight: 700;
+  box-shadow: 0 1px 4px rgba(34,197,94,0.4); flex-shrink: 0;
+}
+.pi-title { font-size: 0.98rem; font-weight: 500; color: var(--ink); }
+.pi-org { font-size: 0.9rem; color: var(--muted); }
 .photo-inner .photo-img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; transform: scale(1.18) translateX(-6%); }
 
 .hero-text h1 {
